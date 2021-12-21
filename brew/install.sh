@@ -14,3 +14,6 @@ brew upgrade
 
 # install via brew
 brew bundle --file=./Brewfile
+
+brew cleanup
+brew doctor

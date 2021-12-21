@@ -7,7 +7,7 @@ cd fonts
 cd ..
 rm -rf fonts
 
-#install oh my zsh
+# install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # copy my zsh settings

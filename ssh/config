@@ -1,0 +1,18 @@
+Host *
+  ForwardAgent yes
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  AddKeysToAgent yes
+  ServerAliveInterval 30
+
+Host ssh.dev.azure.com
+  HostKeyAlgorithms ssh-rsa
+  PubkeyAcceptedKeyTypes ssh-rsa
+  Hostname ssh.dev.azure.com
+  IdentityFile ~/.ssh/ey_2021
+  IdentitiesOnly yes
+
+# Cluster
+Host 192.168.1.10
+  IdentityFile ~/.ssh/k8s_id_rsa
+
