@@ -1,7 +1,13 @@
 # !/bin/bash
 # http://redsymbol.net/articles/unofficial-bash-strict-mode/
-set -euo pipefail
-IFS=$'\n\t'
+#set -euo pipefail
+#IFS=$'\n\t'
+
+# Install updates, xcode
+sudo softwareupdate --all --install --force
+sudo softwareupdate --install-rosetta
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
 
 # install brew
 source ./brew/install.sh
@@ -12,6 +18,9 @@ sudo xcodebuild -license accept
 # setup iterm2
 source ./iterm2/install.sh
 
+# setup zsh
+source ./zsh/install.sh
+
 # setup VSCode
 source ./vscode/install.sh
 
@@ -20,6 +29,8 @@ source ./ssh/install.sh
 
 # Change Git Default branch name
 git config --global init.defaultBranch main
+git config --global user.name Alessandro Iob
+git config --global user.email alessandro.iob@gmail.com
 
 # MacOS specifics
 
