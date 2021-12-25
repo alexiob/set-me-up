@@ -15,8 +15,8 @@ source ./brew/install.sh
 # setup XCode
 sudo xcodebuild -license accept
 
-# setup iterm2
-source ./iterm2/install.sh
+# NOT WORKING: setup iterm2
+# source ./iterm2/install.sh
 
 # setup zsh
 source ./zsh/install.sh
