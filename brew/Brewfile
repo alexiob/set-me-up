@@ -252,6 +252,7 @@ cask "google-cloud-sdk"
 cask "google-chrome"
 cask "google-drive"
 cask "google-earth-pro"
+cask "hammerspoon"
 cask "http-toolkit"
 cask "intellij-idea"
 cask "istat-menus"
@@ -297,6 +298,6 @@ cask "zotero"
 
 # MAS
 mas "Xcode", id: 497799835
-mas "Magnet", id: 441258766
+#mas "Magnet", id: 441258766
 mas "The Unarchiver", id: 425424353
 mas "Paste - Clipboard Manager", id: 967805235
