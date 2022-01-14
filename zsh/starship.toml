@@ -1,0 +1,36 @@
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[hostname]
+ssh_only = false
+format =  "@ [$hostname](bold red): "
+trim_at = ".local"
+disabled = false
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"
+
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+style = "bold blue"
+symbol = ""
+
+[azure]
+disabled = false
+format = "[$symbol($subscription)]($style) "
+symbol = "ﴃ"
+style = "bold blue"
+
+[gcloud]
+symbol = ""
+format = '[$symbol\($account@($domain)\)(\($project\))]($style) '
+style = "bold blue"

@@ -160,7 +160,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+#
 # Kubernetes
 
 alias k="kubectl"
@@ -177,8 +177,10 @@ alias k="kubectl"
 
 # Elixir
 
-source ~/.mix_autocomplete.zsh
+# source ~/.mix_autocomplete.zsh
 
 # JAVA
 
-source ~/.asdf/plugins/java/set-java-home.zsh
+# source ~/.asdf/plugins/java/set-java-home.zsh
+
+eval "$(starship init zsh)"
