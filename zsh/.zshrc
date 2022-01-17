@@ -106,6 +106,10 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+alias livebook_install="mix escript.install hex livebook && asdf reshim elixir"
+alias livebook_upgrade="mix escript.install hex livebook"
+alias livebook_start="livebook server --port 18080"
+
 alias reload="exec ${SHELL} -l"
 alias flush_dns="sudo killall -HUP mDNSResponder"
 alias show_files='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
