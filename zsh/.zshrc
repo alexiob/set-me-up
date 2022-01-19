@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
@@ -11,18 +18,23 @@ export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 #For pkg-config to find postgresql@11 you may need to set:
 #export PKG_CONFIG_PATH="/usr/local/opt/postgresql@11/lib/pkgconfig"
 
-# zsh-completition
-fpath=(/usr/local/share/zsh-completions $fpath)
-# auto-suggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# syntax highlight
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# google
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+if type brew &>/dev/null; then
+	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-fpath=(~/.zsh-completione $fpath)
-autoload -Uz compinit && compinit -i
+	autoload -Uz compinit
+	compinit
+fi
+
+# auto-suggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# syntax highlight
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# # google
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
+# fpath=(~/.zsh-completione $fpath)
+# autoload -Uz compinit && compinit -i
 
 eval "$(direnv hook zsh)"
 
@@ -35,13 +47,18 @@ export ZSH=/Users/alex/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator history dir_writable dir virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='007'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='006'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='007'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+#ZSH_THEME="powerlevel10k/powerlevel10k"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context root_indicator history dir_writable dir virtualenv vcs)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+# POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='007'
+# POWERLEVEL9K_DIR_HOME_FOREGROUND='006'
+# POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='007'
+# POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+# POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -139,7 +156,8 @@ fi
 ###-tns-completion-end-###
 
 # ASDF
-. $HOME/.asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+#. $HOME/.asdf/asdf.sh
 #. $HOME/.asdf/completions/asdf.bash
 
 # append completions to fpath
@@ -157,14 +175,15 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PYENV_ROOT/shims:${PATH}"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+#  eval "$(pyenv virtualenv-init -)"
 fi
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-#
+
 # Kubernetes
 
 alias k="kubectl"
@@ -188,3 +207,4 @@ alias k="kubectl"
 # source ~/.asdf/plugins/java/set-java-home.zsh
 
 eval "$(starship init zsh)"
+
