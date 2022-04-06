@@ -163,6 +163,7 @@ brew "minio", restart_service: true
 brew "minio-mc"
 brew "protobuf"
 brew "mosh"
+brew "navi"
 brew "neo4j", restart_service: true
 brew "nginx", restart_service: true
 brew "nmap"
@@ -227,6 +228,7 @@ brew "azure/draft/draft"
 brew "cockroachdb/tap/cockroach"
 brew "minio/stable/mc", link: false
 brew "txn2/tap/kubefwd"
+brew "xo/xo/usql"
 
 # CASK
 cask "1password"
